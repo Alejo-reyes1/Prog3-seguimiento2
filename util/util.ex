@@ -13,13 +13,30 @@ System.cmd("java", ["-cp", "util", "Mensaje","input", message])
 end
 
 def input(message, :integer) do
-input(message, :string)
-|> String.to_integer()
-end
+    try do
+      message
+      |> input(:string)
+      |> String.to_integer()
+    rescue
+      ArgumentError ->
+        show_message("Error: Input is not a valid integer.")
+      message
+      |> input(:integer)
+    end
+  end
 
 def input(message, :float) do
-input(message, :string)
-|> String.to_float()
+  try do
+    message
+    |>input(:string)
+    |>String.to_float()
+  rescue
+    ArgumentError ->
+      show_message("Error: Input is not a valid float.")
+
+    message
+    |> input(:float)
+  end
 end
 
 end
