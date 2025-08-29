@@ -6,7 +6,7 @@ defmodule Util do
 end
 
 def input(message, :string) do
-System.cmd("java", ["-cp", ".", "Mensaje","input", message])
+System.cmd("java", ["-cp", "util", "Mensaje","input", message])
 |> elem(0)
 |> String.trim()
 
