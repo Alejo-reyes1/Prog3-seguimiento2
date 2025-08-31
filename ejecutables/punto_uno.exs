@@ -1,3 +1,4 @@
+Code.require_file("util/util.ex")
 
 defmodule Main do
 

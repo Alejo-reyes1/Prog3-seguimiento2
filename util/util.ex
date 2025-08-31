@@ -1,8 +1,7 @@
 defmodule Util do
 
   def show_message(message) do
-    message
-    |> IO.puts()
+    System.cmd("java", ["-cp", "util", "Mensaje", message])
 end
 
 def input(message, :string) do
@@ -29,7 +28,7 @@ def input(message, :float) do
   try do
     message
     |>input(:string)
-    |>nomarlizar_float()
+    |>String.to_float()
   rescue
     ArgumentError ->
       show_message("Error: Input is not a valid float.")
@@ -37,9 +36,6 @@ def input(message, :float) do
     message
     |> input(:float)
   end
-end
-
-defp nomarlizar_float(string)do
 end
 
 end
